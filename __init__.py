@@ -23,7 +23,7 @@ class LectureSkill(MycroftSkill):
 
     def handle_lecture_intent(self, message):
 
-        f = open("/opt/mycroft/skills/lecture.viljanen/dates.txt", "r")     #open textfile
+        f = open("/opt/mycroft/skills/lecture-subjects-skill/dates.txt", "r")     #open textfile
         dateFound = False
         lectureNumber = 0
         line = f.readline()
