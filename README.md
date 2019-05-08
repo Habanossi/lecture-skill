@@ -20,8 +20,6 @@ If the date of today cannot be found in "dates.txt", nolecture.dialog will be us
 ## Examples
  - "What is the subject of the lecture"
  - "What theme does the lecture have"
- - "What kind of content can we expect from today's lecture"
-
 
 ## Credits
 Viljanen
