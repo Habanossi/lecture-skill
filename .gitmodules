@@ -1,0 +1,3 @@
+[submodule "lecture-subjects-skill"]
+	path = lecture-subjects-skill
+	url = https://github.com/Habanossi/lecture-skill
