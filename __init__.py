@@ -1,6 +1,6 @@
 import datetime
 from adapt.intent import IntentBuilder
-
+from mycroft import intent_handler
 from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
 
@@ -12,14 +12,15 @@ LOGGER = getLogger(__name__)
 class LectureSkill(MycroftSkill):
 
 
+
     def __init__(self):
         super(LectureSkill, self).__init__(name="LectureSkill")
 
-    def initialize(self):
 
-        lecture_intent = IntentBuilder("LectureIntent"). \
-            require("LectureKeyword").build()
-        self.register_intent(lecture_intent,  self.handle_lecture_intent)
+
+    @intent_handler(IntentBuilder("LectureIntent").require("LectureKeyword").require("SubjectKeyword"))
+
+
 
     def handle_lecture_intent(self, message):
 
@@ -37,7 +38,7 @@ class LectureSkill(MycroftSkill):
             d = int(line[6:8])       #dd
             date = datetime.date(y, m, d)
             if datetime.date.today() == date:    #check if date is today, speak accordingly
-                self.speak_dialog("lecture" + str(lecturenumber))
+                self.speak_dialog("lecture" + str(lectureNumber))
                 dateFound = True
             line = f.readline()
 
@@ -45,10 +46,15 @@ class LectureSkill(MycroftSkill):
             self.speak_dialog("nolecture")
 
 
+
         f.close()                      #close textfile
+
+
 
     def stop(self):
         pass
+
+
 
 
 def create_skill():
