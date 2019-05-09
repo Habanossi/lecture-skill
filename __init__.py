@@ -28,12 +28,12 @@ class LectureSkill(MycroftSkill):
         dateFound = False
         lectureNumber = 0
         line = f.readline()
-		g = open("/opt/mycroft/skills/lecture-subjects-skill/settings.txt", "r")     #open textfile
-		line2 = g.readline()
+        g = open("/opt/mycroft/skills/lecture-subjects-skill/settings.txt", "r")     #open textfile
+        line2 = g.readline()
         if line2[0] == "0":
             self.speak_dialog("default")
             dateFound = True
-		g.close()
+        g.close()
         while(line and not dateFound):                 #while right date hasn't been found and there is lines in the textfile, the program will read new lines from textfile
             lectureNumber += 1         #for each line the lectureNumber will go up
             y = int(line[0:4])         #yyyy
@@ -53,21 +53,22 @@ class LectureSkill(MycroftSkill):
         f.close()                      #close textfile
 
 
-	@intent_handler(IntentBuilder("SettingsIntent").require("LectureKeyword").require("SettingsKeyword").require("ChangeKeyword"))
+    @intent_handler(IntentBuilder("SettingsIntent").require("LectureKeyword").require("SettingsKeyword").require("ChangeKeyword"))
 
-	def handle_settings_intent(self, message):
+    def handle_settings_intent(self, message):
 
- 		f = open("/opt/mycroft/skills/lecture-subjects-skill/settings.txt", "r")     #open textfile
-		line = f.readline()
-		f.close()
-		f  = open("/opt/mycroft/skills/lecture-subjects-skill/settings.txt", "w")     #open textfile
-		if line[0] == '1':		
-			f.write('0')
-		else
-			f.write('1')
+            f = open("/opt/mycroft/skills/lecture-subjects-skill/settings.txt", "r")     #open textfile
+            line = f.readline()
+            f.close()
+            f  = open("/opt/mycroft/skills/lecture-subjects-skill/settings.txt", "w")     #open textfile
+            if line[0] == "1":
+                    f.write("0")
+                    self.speak_dialog("defset")
+            else:
+                    f.write("1")
+                    self.speak_dialog("specset")
 
-
-		f.close()                      #close textfile
+            f.close()                      #close textfile
 
     def stop(self):
         pass
