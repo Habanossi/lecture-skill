@@ -12,7 +12,7 @@ In "dates.txt" the user puts dates for upcoming lectures with some requirements:
 The user can modify the .dialog files to match the lectures. Files will be named "lecture1", "lecture2" and so on. 
 Observe that the amount of lecture.dialog files must match the amount of dates in "dates.txt". Otherwise an error will occur.
 
-If '*' is put on the first line of "dates.txt", a default dialog line will be used.
+Date settings can be changed so that mycroft either uses a default answer or uses dates.txt for lecture subjects set for specific dates.
 If the date of today cannot be found in "dates.txt", nolecture.dialog will be used. This means that there is no lecture today.
 
 
@@ -20,6 +20,7 @@ If the date of today cannot be found in "dates.txt", nolecture.dialog will be us
 ## Examples
  - "What is the subject of the lecture"
  - "What theme does the lecture have"
+ - "Change the lecture settings"
 
 ## Credits
 Viljanen
