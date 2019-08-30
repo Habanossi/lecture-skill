@@ -38,7 +38,7 @@ class LectureSkill(MycroftSkill):
             lectureNumber += 1         #for each line the lectureNumber will go up
             y = int(line[0:4])         #yyyy
             m = int(line[4:6])         #mm
-            d = int(line[6:8])       #dd
+            d = int(line[6:8])	       #dd
             date = datetime.date(y, m, d)
             if datetime.date.today() == date:    #check if date is today, speak accordingly
                 self.speak_dialog("lecture" + str(lectureNumber))
@@ -69,6 +69,44 @@ class LectureSkill(MycroftSkill):
                     self.speak_dialog("specset")
 
             f.close()                      #close textfile
+
+
+    @intent_handler(IntentBuilder("Dialog1Intent").require("DialogKeyword1"))
+
+    def handle_dialog1_intent(self, message):
+
+        self.speak_dialog("dialogAns1")
+
+
+    @intent_handler(IntentBuilder("Dialog2Intent").require("DialogKeyword2"))
+
+    def handle_dialog2_intent(self, message):
+
+        self.speak_dialog("dialogAns2")
+
+    @intent_handler(IntentBuilder("Dialog3Intent").require("DialogKeyword3"))
+
+    def handle_dialog3_intent(self, message):
+
+        self.speak_dialog("dialogAns3")
+
+
+    @intent_handler(IntentBuilder("Dialog4Intent").require("DialogKeyword4"))
+
+    def handle_dialog4_intent(self, message):
+
+        self.speak_dialog("dialogAns4")
+
+
+    @intent_handler(IntentBuilder("Dialog5Intent").require("DialogKeyword5"))
+
+    def handle_dialog5_intent(self, message):
+
+        self.speak_dialog("dialogAns5")
+
+
+
+
 
     def stop(self):
         pass
